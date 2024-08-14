@@ -2,14 +2,17 @@ N = int(input())
 M = int(input())
 S = input()
 cnt = 0
-for i in range(M):
-    if S[i] == "I":
-        ioi = True
-        if i+(2*N)<M:
-            for j in range(1,(N*2)+1):
-                if S[i+j] == S[i+j-1]:
-                    ioi = False
-                    break
-            if ioi:
-                cnt +=1
-print(cnt)
+i = 0
+ans = 0
+while i < M:
+    if S[i:i+3] == "IOI":
+        i+=2
+        cnt += 1
+        if cnt == N:
+            ans+=1
+            cnt-=1
+    else:
+        i+=1
+        cnt = 0
+        
+print(ans)
